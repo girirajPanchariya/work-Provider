@@ -11,7 +11,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/User/logout", {
+      const res = await axios.get("https://work-provider-1.onrender.com/User/logout", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });

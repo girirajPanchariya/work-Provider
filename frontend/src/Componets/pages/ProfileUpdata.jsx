@@ -19,7 +19,7 @@ const ProfileUpdata = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/User/user', {
+        const res = await axios.get('https://work-provider-1.onrender.com/User/user', {
           headers: {
             'Content-Type': 'application/json'
           },
@@ -45,7 +45,7 @@ const ProfileUpdata = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.put(`http://localhost:4000/User/update`, user, {
+      const res = await axios.put(`https://work-provider-1.onrender.com/User/update`, user, {
         headers: {
           'Content-Type': 'application/json',
         },

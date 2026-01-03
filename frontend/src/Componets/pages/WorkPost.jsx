@@ -18,7 +18,7 @@ const WorkPost = () => {
     const handleSubmit = async(e)=>{
              e.preventDefault();
              try {
-                    const res = await axios.post('http://localhost:4000/Work/Postwork',work,{
+                    const res = await axios.post('https://work-provider-1.onrender.com/Work/Postwork',work,{
                         headers:{
                             'Content-Type':'application/json'
                         },

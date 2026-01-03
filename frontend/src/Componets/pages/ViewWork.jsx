@@ -10,7 +10,7 @@ const ViewWork = () => {
 
   const fetchWorkDetails = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:4000/Work/MyAll/${id}`, {
+      const res = await axios.get(`https://work-provider-1.onrender.com/Work/MyAll/${id}`, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -11,7 +11,7 @@ const MyWork = () => {
   useEffect(() => {
     const fetchMyWorks = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/Work/MyAll', {
+        const res = await axios.get('https://work-provider-1.onrender.com/Work/MyAll', {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true,
         });
