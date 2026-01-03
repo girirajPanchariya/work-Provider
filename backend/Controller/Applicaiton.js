@@ -1,6 +1,6 @@
-import { ApplicationModel } from "../Models/ApplicationMOdel.js";
 import { UserModel } from "../Models/UserModel.js";
 import { workModel } from "../Models/workModel.js";
+import { ApplicationModel } from "../Models/ApplicationModel.js";
 
 export const Application = async (req, res) => {
   try {
