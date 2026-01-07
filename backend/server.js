@@ -8,20 +8,26 @@ import { workRouer } from './Router/workRouter.js'
 import { ApplRouter } from './Router/application.js'
 
 dotenv.config()
+
 const app = express()
-const PORT = process.env.PORT
-app.use(cors({
-    credentials:true 
-}))
+
 app.use(express.json())
 app.use(cookieParser())
-app.use('/User',UserRouter)
-app.use('/Work',workRouer)
-app.use('/Api',ApplRouter)
 
-app.listen(PORT,()=>{
-        console.log(`server is runing on PORT ${PORT}`);
-        ConnectionDb()
+// ✅ CORRECT CORS CONFIG
+app.use(cors({
+  origin: 'https://peaceful-frangollo-2b133a.netlify.app',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}))
 
-        
+app.use('/User', UserRouter)
+app.use('/Work', workRouer)
+app.use('/Api', ApplRouter)
+
+const PORT = process.env.PORT || 4000
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+  ConnectionDb()
 })

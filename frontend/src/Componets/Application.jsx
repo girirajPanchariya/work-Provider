@@ -27,7 +27,7 @@ const Application = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get(`https://work-provider-1.onrender.com/Api/My/${id}`, {
+      const res = await axios.get(`http://localhost:4000/Api/My/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         },

@@ -15,7 +15,7 @@ const WorkerTypeToWork = () => {
       setLoadingId(workId);
 
       const res = await axios.post(
-        `https://work-provider-1.onrender.com/Api/Apply/${workId}`,
+        `http://localhost:4000/Api/Apply/${workId}`,
         {},
         {
           headers: {
