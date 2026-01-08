@@ -9,7 +9,7 @@ const LoginTypeLatest = () => {
 
   const fetchWorker = async () => {
     try {
-      const res = await axios.get("https://work-provider.onrender.com/User/All", {
+      const res = await axios.get("http://localhost:4000/User/All", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
