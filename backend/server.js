@@ -16,11 +16,12 @@ app.use(cookieParser())
 
 // ✅ CORRECT CORS CONFIG
 app.use(cors({
-  origin: 'https://peaceful-frangollo-2b133a.netlify.app',
+  origin: [
+    'http://localhost:5173',
+    'https://your-netlify-site.netlify.app'
+  ],
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }))
-
 app.use('/User', UserRouter)
 app.use('/Work', workRouer)
 app.use('/Api', ApplRouter)
