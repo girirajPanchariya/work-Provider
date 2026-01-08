@@ -27,7 +27,7 @@ const UserRegistration = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:4000/User/Register', form);
+      const res = await axios.post('https://work-provider-2.onrender.com/User/Register', form);
 
       alert(res.data.message);
 
