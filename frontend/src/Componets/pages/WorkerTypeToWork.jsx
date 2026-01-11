@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
+import api from "../../api";
 
 const WorkerTypeToWork = () => {
   const [works, setWorks] = useState([]);
@@ -14,15 +15,8 @@ const WorkerTypeToWork = () => {
     try {
       setLoadingId(workId);
 
-      const res = await axios.post(
-        `http://localhost:4000/Api/Apply/${workId}`,
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
+      const res = await api.post(
+        `/Api/Apply/${workId}`
       );
 
       alert(res.data.message);
@@ -43,12 +37,7 @@ const WorkerTypeToWork = () => {
   // ✅ Fetch work and applied jobs from backend
   const fetchWork = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/User/workType`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
+      const res = await api.get(`/User/workType`);
 
       setWorks(res.data.work || []);
       setUser(res.data.user || null);

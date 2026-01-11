@@ -4,6 +4,7 @@ import { useAuth } from "./useContext/AuthContext";
 import axios from "axios";
 import { ImProfile } from "react-icons/im";
 import { FaUserCircle } from "react-icons/fa";
+import api from "../api";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -11,10 +12,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/User/logout", {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
+      const res = await axios.get("/User/logout");
       alert(res.data.message);
       logout();
       navigate("/");

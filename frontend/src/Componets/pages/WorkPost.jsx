@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Navbar from '../Navbar'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import api from '../../api'
 
 const WorkPost = () => {
     const [work,setwork]=useState({
@@ -18,12 +19,7 @@ const WorkPost = () => {
     const handleSubmit = async(e)=>{
              e.preventDefault();
              try {
-                    const res = await axios.post('http://localhost:4000/Work/Postwork',work,{
-                        headers:{
-                            'Content-Type':'application/json'
-                        },
-                        withCredentials:true
-                    })
+                    const res = await api.post('/Work/Postwork',work)
                     setwork(res.data)
                     alert(res.data.message)
              } catch (error) {

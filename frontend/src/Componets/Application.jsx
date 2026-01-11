@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
+import api from '../api';
 
 const Application = () => {
   const [applications, setApplications] = useState([]);
@@ -27,12 +28,7 @@ const Application = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get(`http://localhost:4000/Api/My/${id}`, {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        withCredentials: true
-      });
+      const res = await api.get(`/Api/My/${id}`);
       
       // Data is correctly nested under the 'applications' key
       setApplications(res.data.applications);

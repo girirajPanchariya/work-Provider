@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar";
+import api from "../../api";
 
 const ViewWork = () => {
   const [work, setWork] = useState(null);
@@ -10,7 +11,7 @@ const ViewWork = () => {
 
   const fetchWorkDetails = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:4000/Work/MyAll/${id}`, {
+      const res = await api.get(`/Work/MyAll/${id}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -26,12 +27,7 @@ const ViewWork = () => {
 
    const fetchWorkers = async (id) => {
   try {
-    const res = await axios.get(`http://localhost:4000/Work/work/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    });
+    const res = await api.get(`/Work/work/${id}`);
     setWorkers(res.data.workers || []);
     console.log(res.data.workers);
     

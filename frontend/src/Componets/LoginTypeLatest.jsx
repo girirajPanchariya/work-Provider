@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import api from "../api";
 
 const LoginTypeLatest = () => {
   const [worker, setWorker] = useState([]);
@@ -9,10 +10,7 @@ const LoginTypeLatest = () => {
 
   const fetchWorker = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/User/All", {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
+      const res = await api.get("/User/All");
       setWorker(res.data.workers || []);
     } catch (error) {
       setError("Failed to fetch workers.");
@@ -21,7 +19,7 @@ const LoginTypeLatest = () => {
 
   const fetchWork = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/Work/All", {
+      const res = await api.get("/Work/All", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });

@@ -3,6 +3,7 @@ import Navbar from "../Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../useContext/AuthContext";
+import api from "../../api";
 
 const UserLogin = () => {
   const [user,setUser] = useState({
@@ -20,15 +21,10 @@ const UserLogin = () => {
       const handelSubmit = async(e)=>{
     e.preventDefault();
          try {
-  const res = await axios.post(
-    'http://localhost:4000/User/login',
+  const res = await api.post(
+    '/User/login',
     user,
-    {
-      headers: {
-        'Content-Type': 'application/json', // fixed spelling
-      },
-      withCredentials: true // fixed spelling
-    }
+    
   );
   login(res.data.user)
   

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar';
+import api from '../../api';
 
 const ProfileUpdata = () => {
   const [user, setUser] = useState({
@@ -19,12 +20,7 @@ const ProfileUpdata = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/User/user', {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          withCredentials: true
-        });
+        const res = await api.get('/User/user');
 
         const { password, ...userData } = res.data.user;
         setUser(prev => ({ ...prev, ...userData }));

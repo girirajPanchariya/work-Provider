@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
+import api from '../api';
 
 const MyWork = () => {
   const [work, setWork] = useState([]);
@@ -11,10 +12,7 @@ const MyWork = () => {
   useEffect(() => {
     const fetchMyWorks = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/Work/MyAll', {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        });
+        const res = await api.get('/Work/MyAll');
         setWork(res.data);
       } catch (err) {
         console.error('Error fetching work data:', err);
