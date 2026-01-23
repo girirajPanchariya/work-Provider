@@ -16,7 +16,8 @@ const app = express()
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://capable-jelly-21e251.netlify.app'
+    'https://capable-jelly-21e251.netlify.app',
+    'https://resilient-basbousa-a324a1.netlify.app'
   ],
   credentials: true,
 }))
