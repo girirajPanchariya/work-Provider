@@ -27,7 +27,8 @@ const UserLogin = () => {
     
   );
   login(res.data.user)
-  
+    localStorage.setItem("authUser", JSON.stringify(res.data.user));
+    localStorage.setItem("token", res.data.token); // ✅ store token
   alert(res.data.message)
 
   navigate('/')

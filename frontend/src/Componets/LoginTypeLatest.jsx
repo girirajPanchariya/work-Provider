@@ -65,7 +65,7 @@ const LoginTypeLatest = () => {
             key={wo._id}
            className="bg-[#FDE68A] rounded-md shadow-md p-4 border border-[#93C5FD] transition hover:shadow-lg hover:shadow-[#60A5FA]"
 >
-            <ul className="text-[#0F172A] space-y-1 text-sm font-medium">
+            <ul className="text-[rgb(15,23,42)] space-y-1 text-sm font-medium">
               <li><strong>Worker Type:</strong> {wo.workerType || 'N/A'}</li>
               <li><strong>Address:</strong> {wo.address || 'N/A'}</li>
               <li><strong>Payment:</strong> {wo.PyMeant || 'N/A'}</li>

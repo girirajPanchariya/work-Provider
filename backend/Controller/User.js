@@ -102,17 +102,19 @@ export const Login = async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: "2d" });
 
-    return res.cookie("token", token, {
-  httpOnly: true,
-  secure: true,        // REQUIRED on HTTPS
-  sameSite: "none"     // REQUIRED for cross-site cooki
-
-      }).status(200)
+    return res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: false,        // change to true if using HTTPS
+        sameSite: "lax"
+      })
+      .status(200)
       .json({
         message: `${user.name} logged in successfully`,
         user,
-        token,
+        token
       });
+
   } catch (error) {
     console.error("Login error:", error.message);
     return res.status(500).json({ message: "Login error", error: error.message });

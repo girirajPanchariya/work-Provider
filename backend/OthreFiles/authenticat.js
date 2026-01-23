@@ -1,23 +1,23 @@
-import jwt from 'jsonwebtoken'
+// backend/middleware/authenticate.js
+import jwt from "jsonwebtoken";
 
-export const authenticate = async (req, res, next) => {
+export const authenticate = (req, res, next) => {
   try {
-    const token = req.cookies.token
+    const token = req.cookies?.token;
 
     if (!token) {
-      return res.status(400).json({  // <-- fixed .json here
-        message: "The token not provided"
-      })
+      return res.status(401).json({ message: "Token not provided" });
     }
 
-    const decoded = jwt.verify(token, process.env.SECRET_KEY)
-    req.user = { id: decoded.id }  // ✅ sets req.user.id for use downstream
-    next()
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+    req.user = { id: decoded.id }; // ✅ accessible in routes
+    next();
 
   } catch (error) {
-    return res.status(400).json({  // <-- fixed .json here
-      message: "User authentication error",
+    return res.status(401).json({
+      message: "User authentication failed",
       error: error.message
-    })
+    });
   }
-}
+};
